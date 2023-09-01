@@ -1,0 +1,21 @@
+import React, { useRef, useEffect } from 'react';
+
+export function App(props) {
+  const colour = useRef(null); // it will creat an obj as {current:'null'}
+  const randomColors = ['green', 'blue', 'yellow', 'white', 'red'];
+
+  function changeTextColor() {
+    var paraColor = Math.floor(Math.random() * randomColors.length);
+    colour.current.style.color = randomColors[paraColor];
+  }
+  useEffect(() => {
+    console.log(colour.current);
+  });
+
+  return (
+    <div>
+      <button onClick={() => changeTextColor()}>change para color</button>
+      <p ref={colour}>click the button to change text colour</p>
+    </div>
+  );
+}
